@@ -2,7 +2,7 @@ from flask import Flask
 from .config import Config
 from .db import db, migrate
 from .models import *
-from .student_routes import student_bp   # ✅ relative import
+from .routes.student import student_bp  # Correct import
 
 def create_app():
     app = Flask(__name__)
