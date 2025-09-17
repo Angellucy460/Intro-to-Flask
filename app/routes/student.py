@@ -151,5 +151,22 @@ def edit_student():
 
 @student_bp.route("/list",methods=["GET"])
 def list_users():
-    print("List Students")
-    return "List All students"
+    students=Student.query.all()
+
+    print(students)
+    student_list=[]
+
+    for student in students:
+        student_list.append({
+            "id":student.id,
+            "name":student.name,
+            "email":student.email,
+            "created_at":student.created_at
+        })
+
+    print(student_list)
+
+    return jsonify({
+        "students":student_list,
+        "count":len(student_list)
+    }),200
